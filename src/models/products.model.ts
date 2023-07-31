@@ -8,11 +8,12 @@ import {
   Model,
   Table,
 } from 'sequelize-typescript';
+import { ProductData } from '../types/Products';
 
 @Table({
   tableName: 'products',
 })
-export class Products extends Model {
+export class Products extends Model<ProductData, Partial<ProductData>> {
   @AllowNull(false)
   @Column({
     type: DataType.STRING,
@@ -48,27 +49,27 @@ export class Products extends Model {
 
   @AllowNull(false)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-    screen: number;
+    screen: string;
 
   @AllowNull(false)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-    capacity: number;
+    capacity: string;
 
   @AllowNull(false)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-    color: number;
+    color: string;
 
   @AllowNull(false)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-    ram: number;
+    ram: string;
 
   @AllowNull(false)
   @Column({
@@ -78,7 +79,7 @@ export class Products extends Model {
 
   @AllowNull(false)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-    image: number;
+    image: string;
 }
