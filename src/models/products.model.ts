@@ -13,9 +13,7 @@ import { ProductData } from '../types/Products';
 @Table({
   tableName: 'products',
 })
-
 export class Products extends Model<ProductData, Partial<ProductData>> {
-
   @AllowNull(false)
   @Column({
     type: DataType.STRING,
