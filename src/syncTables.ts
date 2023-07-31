@@ -9,7 +9,6 @@ export const syncTables = async () => {
   await Products.sync({ alter: true });
 
   console.log('Products table was created');
-  
 };
 
 syncTables();

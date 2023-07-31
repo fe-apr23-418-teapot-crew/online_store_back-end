@@ -10,9 +10,12 @@ export const createServer = () => {
 
   initDB();
 
-  app.use(cors({
-    origin: 'https://fe-apr23-418-teapot-crew.github.io/online_store_front-end/'
-  }));
+  app.use(
+    cors({
+      origin:
+        'https://fe-apr23-418-teapot-crew.github.io/online_store_front-end/',
+    }),
+  );
 
   app.use('/products', express.json(), productsRouter);
 

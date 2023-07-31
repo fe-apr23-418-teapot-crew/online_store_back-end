@@ -1,25 +1,24 @@
 'use strict';
 
-import { 
+import {
   AllowNull,
-  Column, 
-  DataType, 
-  // ForeignKey, 
-  Model, 
-  Table, 
+  Column,
+  DataType,
+  // ForeignKey,
+  Model,
+  Table,
 } from 'sequelize-typescript';
 
 @Table({
   tableName: 'products',
 })
-
 export class Products extends Model {
   @AllowNull(false)
   @Column({
     type: DataType.STRING,
   })
     category: string;
-  
+
   @AllowNull(false)
   // @ForeignKey(() => Phones)
   @Column({
