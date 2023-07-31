@@ -1,13 +1,12 @@
-'use strict'
+'use strict';
 
 import express from 'express';
+import productsRouter from './routes/products';
 
 export const createServer = () => {
   const app = express();
 
-  app.get('/', (req, res) => {
-    res.send('hello')
-  })
+  app.use('/products', express.json(), productsRouter);
 
   return app;
-}
+};
