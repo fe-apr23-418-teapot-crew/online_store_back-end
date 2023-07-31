@@ -11,8 +11,8 @@
     "fix-style": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
     "build": "tsc",
-    "pre-build": "npm install; npm run build",
-    "start": "node build/main.ts"
+    "pre-build": "npm install && npm run build",
+    "start": "node build/main.js"
   },
   "repository": {
     "type": "git",
