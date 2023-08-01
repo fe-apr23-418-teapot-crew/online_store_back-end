@@ -3,6 +3,7 @@
 import express from 'express';
 import cors from 'cors';
 import productsRouter from './routes/products';
+import publicRouter from './routes/public';
 import { initDB } from './initDB';
 
 export const createServer = () => {
@@ -10,14 +11,11 @@ export const createServer = () => {
 
   initDB();
 
-  app.use(
-    cors({
-      origin:
-        'https://fe-apr23-418-teapot-crew.github.io/online_store_front-end/',
-    }),
-  );
+  app.use(cors());
 
   app.use('/products', express.json(), productsRouter);
+
+  app.use('/img', publicRouter);
 
   return app;
 };
