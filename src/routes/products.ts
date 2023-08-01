@@ -9,8 +9,10 @@ router.get('/', productsController.getAllProducts);
 
 router.get('/:productId', productsController.getOneProduct);
 
+router.get('/:productId/recommended', productsController.getOneProduct);
+
 router.get(
-  '/page/currentPage=:page/perPage=:limit',
+  '/currentPage=:page/perPage=:limit',
   productsController.getProductsByPage,
 );
 
