@@ -9,6 +9,9 @@ router.get('/', productsController.getAllProducts);
 
 router.get('/:productId', productsController.getOneProduct);
 
-router.get('/page/currentPage/:page/perPage/:limit', productsController.getProductsByPage);
+router.get(
+  '/page/currentPage=:page/perPage=:limit',
+  productsController.getProductsByPage,
+);
 
 export default router;

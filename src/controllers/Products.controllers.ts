@@ -75,11 +75,9 @@ const getProductsByPage = async (req: Request, res: Response) => {
   }
 
   if (isNaN(parsedLimit) || parsedLimit <= 0) {
-    res
-      .status(400)
-      .json({
-        error: 'Invalid limit value. Please provide a positive number.',
-      });
+    res.status(400).json({
+      error: 'Invalid limit value. Please provide a positive number.',
+    });
 
     return;
   }

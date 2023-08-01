@@ -58,5 +58,5 @@ The base URL for the API is: **https://four18-teapot-crew-dev.onrender.com/**
 | ------ | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | GET    | [/products](https://four18-teapot-crew-dev.onrender.com/products)                                                                | Get a list of all products in the store.  |
 | GET    | [/products/1](https://four18-teapot-crew-dev.onrender.com/products/1)                                                            | Get information about a specific product. |
-| GET    | [/products/page/currentPage/2/perPage/5](https://four18-teapot-crew-dev.onrender.com/products/page/currentPage/2/perPage/5)                                              | Get a paginated list of products.         |
+| GET    | [/products/page/currentPage=2/perPage=5](https://four18-teapot-crew-dev.onrender.com/products/page/currentPage=2/perPage=5)      | Get a paginated list of products.         |
 | GET    | [/img/phones/apple-iphone-7/black/00.webp](https://four18-teapot-crew-dev.onrender.com/img/phones/apple-iphone-7/black/00.webp5) | Get the photo of a specific product.      |
