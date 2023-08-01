@@ -43,8 +43,8 @@ const getAllProducts = async (req: Request, res: Response) => {
 const getOneProduct = async (req: Request, res: Response) => {
   const { productId } = req.params;
 
-  if (!Number(productId)) {
-    res.sendStatus(404);
+  if (isNaN(Number(productId))) {
+    res.sendStatus(400);
 
     return;
   }
