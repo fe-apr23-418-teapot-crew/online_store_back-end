@@ -4,7 +4,6 @@ import {
   AllowNull,
   Column,
   DataType,
-  // ForeignKey,
   Model,
   Table,
 } from 'sequelize-typescript';
@@ -21,7 +20,6 @@ export class Products extends Model<ProductData, Partial<ProductData>> {
     category: string;
 
   @AllowNull(false)
-  // @ForeignKey(() => Phones)
   @Column({
     type: DataType.STRING,
     field: 'item_id',
