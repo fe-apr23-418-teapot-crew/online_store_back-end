@@ -13,11 +13,7 @@ export class ProductsService {
   }
 
   findAndCountAll(options: FindAllOptions = {}) {
-    const {
-      limit,
-      offset,
-      sortBy = 'id',
-    } = options;
+    const { limit, offset, sortBy = 'id' } = options;
 
     return Products.findAndCountAll({
       limit,
