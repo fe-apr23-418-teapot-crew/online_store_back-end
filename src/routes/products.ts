@@ -11,9 +11,4 @@ router.get('/:productId', productsController.getOneProduct);
 
 router.get('/:productId/recommended', productsController.getOneProduct);
 
-router.get(
-  '/currentPage=:page/perPage=:limit',
-  productsController.getProductsByPage,
-);
-
 export default router;
