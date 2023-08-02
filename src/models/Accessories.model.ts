@@ -8,7 +8,10 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { AccessoriesData, AccessoriesDescription } from '../types/Accessories';
+import {
+  AccessoriesData,
+  AccessoriesDescription,
+} from '../types/AccessoriesType';
 
 @Table({
   tableName: 'accessories',
