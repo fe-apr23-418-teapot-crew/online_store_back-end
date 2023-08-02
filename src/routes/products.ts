@@ -9,4 +9,6 @@ router.get('/', productsController.getAllProducts);
 
 router.get('/:productId', productsController.getOneProduct);
 
+router.get('/:productId/recommended', productsController.getOneProduct);
+
 export default router;
