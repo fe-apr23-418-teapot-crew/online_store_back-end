@@ -21,4 +21,8 @@ export class ProductsService {
       order: [[sortBy, 'ASC']],
     });
   }
+
+  count() {
+    return Products.count();
+  }
 }

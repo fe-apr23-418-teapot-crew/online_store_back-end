@@ -3,6 +3,7 @@
 import { Request, Response } from 'express';
 import { ProductData } from '../types/Products';
 import { ProductsService } from '../services/products.service';
+import { availableSortBy } from '../utils/constants';
 
 const normalize = ({
   id,
@@ -34,12 +35,12 @@ const normalize = ({
   };
 };
 
-const availableSortBy = ['id', 'price', 'year'];
-
 const getAllProducts = async (req: Request, res: Response) => {
   const productsService = new ProductsService();
 
-  const { limit = 10, offset = 0, sortBy = 'id' } = req.query;
+  const count = await productsService.count();
+
+  const { limit = count, offset = 0, sortBy = 'id' } = req.query;
 
   const isSortByValid =
     typeof sortBy === 'string' && availableSortBy.includes(sortBy);
@@ -58,7 +59,10 @@ const getAllProducts = async (req: Request, res: Response) => {
     sortBy,
   });
 
-  res.json(results);
+  res.json({
+    count: results.count,
+    rows: results.rows.map(normalize),
+  });
 };
 
 const getOneProduct = async (req: Request, res: Response) => {
