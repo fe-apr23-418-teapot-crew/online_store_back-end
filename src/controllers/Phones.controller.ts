@@ -2,7 +2,7 @@
 
 import { Request, Response } from 'express';
 import { PhonesData } from '../types/Phones';
-import { Phones } from '../models/phones.model';
+import { PhonesService } from '../services/phones.service';
 
 const normalize = ({
   id,
@@ -47,15 +47,20 @@ const normalize = ({
 };
 
 const getAllPhones = async (req: Request, res: Response) => {
-  const phones = await Phones.findAll();
+  const phonesService = new PhonesService();
 
-  res.json(phones.map(normalize));
+  const phones = await phonesService.findAndCountAll();
+
+  res.json({
+    count: phones.count,
+    rows: phones.rows.map(normalize),
+  });
 };
 
 const getOnePhone = async (req: Request, res: Response) => {
-  const { phoneId } = req.params;
+  const phonesService = new PhonesService();
 
-  console.log(phoneId);
+  const { phoneId } = req.params;
 
   if (Number(phoneId)) {
     res.sendStatus(400);
@@ -63,7 +68,7 @@ const getOnePhone = async (req: Request, res: Response) => {
     return;
   }
 
-  const foundPhone = await Phones.findByPk(phoneId);
+  const foundPhone = await phonesService.findById(phoneId);
 
   if (!foundPhone) {
     res.sendStatus(404);

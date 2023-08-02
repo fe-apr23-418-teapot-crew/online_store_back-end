@@ -9,7 +9,7 @@ import { Phones } from './models/phones.model';
 import { PhonesData } from './types/Phones';
 import { Tablets } from './models/tablets.model';
 import { TabletsData } from './types/TabletsTypes';
-import { Accessories } from './models/Accessories.model';
+import { Accessories } from './models/accessories.model';
 import { AccessoriesData } from './types/Accessories';
 
 const productsFilePath = (fileName: string) => {

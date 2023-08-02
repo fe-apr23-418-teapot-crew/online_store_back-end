@@ -52,11 +52,17 @@ If you would like to contribute to this project, you can follow these steps:
 
 ## Endpoints
 
-The base URL for the API is: **https://four18-teapot-crew-dev.onrender.com/**
+The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](https://four18-teapot-crew-dev.onrender.com/)**
 
-| Method | Endpoint                                                                                                                         | Description                               |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| GET    | [/products](https://four18-teapot-crew-dev.onrender.com/products)                                                                | Get a list of all products in the store.  |
-| GET    | [/products/1](https://four18-teapot-crew-dev.onrender.com/products/1)                                                            | Get information about a specific product. |
-| GET    | [/products?limit=2&offet=10&sortBy=price](https://four18-teapot-crew-dev.onrender.com/products?limit=2&offet=10&sortBy=price)    | Get a paginated list of products.         |
-| GET    | [/img/phones/apple-iphone-7/black/00.webp](https://four18-teapot-crew-dev.onrender.com/img/phones/apple-iphone-7/black/00.webp5) | Get the photo of a specific product.      |
+| Method | Endpoint                                                                                                                                      | Description                                                              |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| GET    | [/products](https://four18-teapot-crew-dev.onrender.com/products)                                                                             | Get an object with count and rows(list of all products in the store.)    |
+| GET    | [/products/1](https://four18-teapot-crew-dev.onrender.com/products/1)                                                                         | Get information about a specific product.                                |
+| GET    | [/products?limit=2&offset=10&sortBy=price](https://four18-teapot-crew-dev.onrender.com/products?limit=2&offset=10&sortBy=price)               | Get a paginated list of products.                                        |
+| GET    | [/phones](https://four18-teapot-crew-dev.onrender.com/phones)                                                                                 | Get an object with count and rows(list of all phones in the store).      |
+| GET    | [/phones/apple-iphone-11-128gb-green](https://four18-teapot-crew-dev.onrender.com/phones/apple-iphone-11-128gb-green)                         | Get information about a specific phone.                                  |
+| GET    | [/tablets](https://four18-teapot-crew-dev.onrender.com/tablets)                                                                               | Get an object with count and rows(list of all tablets in the store).     |
+| GET    | [/tablets/apple-ipad-pro-11-2021-256gb-spacegray](https://four18-teapot-crew-dev.onrender.com/tablets/apple-ipad-pro-11-2021-256gb-spacegray) | Get information about a specific tablet.                                 |
+| GET    | [/accessories](https://four18-teapot-crew-dev.onrender.com/accessories)                                                                       | Get an object with count and rows(list of all accessories in the store). |
+| GET    | [/accessories/apple-watch-series-3-38mm-gold](https://four18-teapot-crew-dev.onrender.com/accessories/apple-watch-series-3-38mm-gold)         | Get information about a specific accessories.                            |
+| GET    | [/img/phones/apple-iphone-7/black/00.webp](https://four18-teapot-crew-dev.onrender.com/img/phones/apple-iphone-7/black/00.webp5)              | Get the photo of a specific product.                                     |
