@@ -1,4 +1,4 @@
-import { Accessories } from './accessories.model';
+import { Accessories } from './Accessories.model';
 import { Phones } from './phones.model';
 import { Products } from './products.model';
 import { Tablets } from './tablets.model';
