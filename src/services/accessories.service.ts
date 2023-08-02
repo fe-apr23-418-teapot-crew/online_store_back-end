@@ -1,5 +1,5 @@
 'use strict';
-import { Accessories } from '../models/accessories.model';
+import { Accessories } from '../models/Accessories.model';
 
 export class AccessoriesService {
   findById(id: string) {

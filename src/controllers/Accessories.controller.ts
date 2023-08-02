@@ -1,7 +1,7 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { AccessoriesData } from '../types/Accessories';
+import { AccessoriesData } from '../types/AccessoriesType';
 import { AccessoriesService } from '../services/accessories.service';
 
 const normalize = ({
