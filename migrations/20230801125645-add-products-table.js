@@ -54,15 +54,6 @@ module.exports = {
         allowNull: false,
       },
     });
-
-    await queryInterface.addConstraint(TABLE_NAME, {
-      fields: ['item_id'],
-      type: 'foreign key',
-      references: {
-        table: 'phones',
-        field: 'id',
-      },
-    });
   },
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
