@@ -6,7 +6,6 @@ import productsRouter from './routes/products';
 import phonesRouter from './routes/phones';
 import tabletsRouter from './routes/tablets';
 import accessoriesRouter from './routes/accessories';
-import publicRouter from './routes/public';
 import { initDB } from './initDB';
 
 export const createServer = () => {
@@ -24,7 +23,7 @@ export const createServer = () => {
 
   app.use('/accessories', express.json(), accessoriesRouter);
 
-  app.use('/img', publicRouter);
+  app.use(express.static('public'));
 
   return app;
 };
