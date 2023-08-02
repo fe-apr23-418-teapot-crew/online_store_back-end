@@ -87,7 +87,42 @@ const getOneProduct = async (req: Request, res: Response) => {
   res.json(normalize(foundProduct));
 };
 
+const recommendedProducts = async (req: Request, res: Response) => {
+  const productsService = new ProductsService();
+
+  const { productId } = req.params;
+
+  if (isNaN(Number(productId))) {
+    res.sendStatus(400);
+
+    return;
+  }
+
+  const foundProduct = await productsService.findById(+productId);
+
+  if (!foundProduct) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  console.log(foundProduct.category);
+
+  const results = await productsService.findAndCountAll({
+    where: {
+      category: foundProduct.category,
+    },
+    sortBy: 'RANDOM',
+  });
+
+  res.json({
+    count: results.count,
+    rows: results.rows.map(normalize),
+  });
+};
+
 export const productsController = {
   getAllProducts,
   getOneProduct,
+  recommendedProducts,
 };
