@@ -19,15 +19,18 @@ const dialectConfig = {
   },
 };
 
-export const development = {
-  ...dbCredentials,
-  ...dialectConfig,
-};
-export const test = {
-  ...dbCredentials,
-  ...dialectConfig,
-};
-export const production = {
-  ...dbCredentials,
-  ...dialectConfig,
+module.exports = {
+  development: {
+    ...dbCredentials,
+    ...dialectConfig,
+  },
+  test: {
+    ...dbCredentials,
+    ...dialectConfig,
+    test: true,
+  },
+  production: {
+    ...dbCredentials,
+    ...dialectConfig,
+  },
 };
