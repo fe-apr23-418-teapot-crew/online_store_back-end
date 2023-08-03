@@ -12,6 +12,7 @@ import { TabletsData, TabletsDescription } from '../types/TabletsTypes';
 
 @Table({
   tableName: 'tablets',
+  timestamps: false,
 })
 export class Tablets extends Model<TabletsData, Partial<TabletsData>> {
   @PrimaryKey

@@ -15,6 +15,7 @@ import {
 
 @Table({
   tableName: 'accessories',
+  timestamps: false,
 })
 export class Accessories extends Model<
   AccessoriesData,

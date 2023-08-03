@@ -1,10 +1,15 @@
 'use strict';
+import { Sequelize } from 'sequelize-typescript';
 import { Products } from '../models/products.model';
+import { OrderItem } from 'sequelize';
 
 interface FindAllOptions {
   limit?: number;
   offset?: number;
   sortBy?: string;
+  where?: {
+    category?: string;
+  };
 }
 
 export class ProductsService {
@@ -13,12 +18,21 @@ export class ProductsService {
   }
 
   findAndCountAll(options: FindAllOptions = {}) {
-    const { limit, offset, sortBy = 'id' } = options;
+    const { limit, offset, sortBy = 'id', where } = options;
+
+    let orderBy: OrderItem[];
+
+    if (sortBy === 'RANDOM') {
+      orderBy = [[Sequelize.literal('RANDOM()'), 'ASC']];
+    } else {
+      orderBy = [[sortBy, 'ASC']];
+    }
 
     return Products.findAndCountAll({
       limit,
       offset,
-      order: [[sortBy, 'ASC']],
+      order: orderBy,
+      where,
     });
   }
 
