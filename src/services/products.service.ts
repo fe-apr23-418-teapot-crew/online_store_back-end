@@ -2,13 +2,15 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Products } from '../models/products.model';
 import { OrderItem } from 'sequelize';
+import { OrderBy, SortByOptions } from '../types/enums/SortingTypes';
+import { ProductCategories } from '../types/enums/ProductCategories';
 
 interface FindAllOptions {
   limit?: number;
   offset?: number;
-  sortBy?: string;
+  sortBy?: SortByOptions;
   where?: {
-    category?: string;
+    category?: ProductCategories;
   };
 }
 
@@ -18,14 +20,25 @@ export class ProductsService {
   }
 
   findAndCountAll(options: FindAllOptions = {}) {
-    const { limit, offset, sortBy = 'id', where } = options;
+    const { limit, offset, sortBy = SortByOptions.ID, where } = options;
 
     let orderBy: OrderItem[];
 
-    if (sortBy === 'RANDOM') {
-      orderBy = [[Sequelize.literal('RANDOM()'), 'ASC']];
-    } else {
-      orderBy = [[sortBy, 'ASC']];
+    switch (sortBy) {
+    case SortByOptions.RANDOM:
+      orderBy = [[Sequelize.literal('RANDOM()'), OrderBy.ASC]];
+      break;
+
+    case SortByOptions.YEAR:
+      orderBy = [
+        [SortByOptions.YEAR, OrderBy.DESC],
+        [SortByOptions.PRICE, OrderBy.ASC],
+      ];
+      break;
+
+    default:
+      orderBy = [[sortBy, OrderBy.ASC]];
+      break;
     }
 
     return Products.findAndCountAll({

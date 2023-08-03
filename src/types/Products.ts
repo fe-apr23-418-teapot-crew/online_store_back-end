@@ -1,8 +1,10 @@
 'use strict';
 
+import { ProductCategories } from './enums/ProductCategories';
+
 export interface ProductData {
   id?: number;
-  category: string;
+  category: ProductCategories;
   itemId: string;
   name: string;
   fullPrice: number;
