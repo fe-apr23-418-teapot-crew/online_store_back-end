@@ -1,39 +1,8 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { ProductData } from '../types/Products';
 import { ProductsService } from '../services/products.service';
 import { availableSortBy } from '../utils/constants';
-
-const normalize = ({
-  id,
-  category,
-  itemId,
-  name,
-  fullPrice,
-  price,
-  screen,
-  capacity,
-  color,
-  ram,
-  year,
-  image,
-}: ProductData): ProductData => {
-  return {
-    id,
-    category,
-    itemId,
-    name,
-    fullPrice,
-    price,
-    screen,
-    capacity,
-    color,
-    ram,
-    year,
-    image,
-  };
-};
 
 const getAllProducts = async (req: Request, res: Response) => {
   const productsService = new ProductsService();
@@ -59,10 +28,7 @@ const getAllProducts = async (req: Request, res: Response) => {
     sortBy,
   });
 
-  res.json({
-    count: results.count,
-    rows: results.rows.map(normalize),
-  });
+  res.json(results);
 };
 
 const getOneProduct = async (req: Request, res: Response) => {
@@ -84,7 +50,7 @@ const getOneProduct = async (req: Request, res: Response) => {
     return;
   }
 
-  res.json(normalize(foundProduct));
+  res.json(foundProduct);
 };
 
 const recommendedProducts = async (req: Request, res: Response) => {
@@ -106,8 +72,6 @@ const recommendedProducts = async (req: Request, res: Response) => {
     return;
   }
 
-  console.log(foundProduct.category);
-
   const results = await productsService.findAndCountAll({
     where: {
       category: foundProduct.category,
@@ -115,10 +79,7 @@ const recommendedProducts = async (req: Request, res: Response) => {
     sortBy: 'RANDOM',
   });
 
-  res.json({
-    count: results.count,
-    rows: results.rows.map(normalize),
-  });
+  res.json(results);
 };
 
 export const productsController = {
