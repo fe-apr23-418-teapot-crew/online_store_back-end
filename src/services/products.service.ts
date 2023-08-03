@@ -30,6 +30,10 @@ export class ProductsService {
       orderBy = [[OrderByColumn.ID, OrderBy.ASC]];
       break;
 
+    case SortByOptions.PRICE:
+      orderBy = [[OrderByColumn.PRICE, OrderBy.ASC]];
+      break;
+
     case SortByOptions.RANDOM:
       orderBy = [[Sequelize.literal('RANDOM()'), OrderBy.ASC]];
       break;
