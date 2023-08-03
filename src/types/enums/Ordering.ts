@@ -1,10 +1,11 @@
 'use strict';
 
-export enum SortByOptions {
+export enum OrderByColumn {
   ID = 'id',
   RANDOM = 'random',
   YEAR = 'year',
   PRICE = 'price',
+  FULL_PRICE = 'full_price',
 }
 
 export enum OrderBy {

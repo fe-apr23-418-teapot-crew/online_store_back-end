@@ -2,8 +2,9 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Products } from '../models/products.model';
 import { OrderItem } from 'sequelize';
-import { OrderBy, SortByOptions } from '../types/enums/SortingTypes';
+import { OrderBy, OrderByColumn } from '../types/enums/Ordering';
 import { ProductCategories } from '../types/enums/ProductCategories';
+import { SortByOptions } from '../types/enums/Sorting';
 
 interface FindAllOptions {
   limit?: number;
@@ -20,25 +21,39 @@ export class ProductsService {
   }
 
   findAndCountAll(options: FindAllOptions = {}) {
-    const { limit, offset, sortBy = SortByOptions.ID, where } = options;
+    const { limit, offset, sortBy, where } = options;
 
     let orderBy: OrderItem[];
 
     switch (sortBy) {
+    case SortByOptions.ID:
+      orderBy = [[OrderByColumn.ID, OrderBy.ASC]];
+      break;
+
     case SortByOptions.RANDOM:
       orderBy = [[Sequelize.literal('RANDOM()'), OrderBy.ASC]];
       break;
 
-    case SortByOptions.YEAR:
+    case SortByOptions.NEW:
       orderBy = [
-        [SortByOptions.YEAR, OrderBy.DESC],
-        [SortByOptions.PRICE, OrderBy.ASC],
+        [OrderByColumn.YEAR, OrderBy.DESC],
+        [OrderByColumn.PRICE, OrderBy.ASC],
+      ];
+      break;
+
+    case SortByOptions.DISCOUNT:
+      orderBy = [
+        [
+          Sequelize.literal(
+            `(${OrderByColumn.FULL_PRICE} - ${OrderByColumn.PRICE})`,
+          ),
+          OrderBy.DESC,
+        ],
       ];
       break;
 
     default:
-      orderBy = [[sortBy, OrderBy.ASC]];
-      break;
+      throw new Error(`Invalid type of sort. Your type is ${sortBy}`);
     }
 
     return Products.findAndCountAll({
