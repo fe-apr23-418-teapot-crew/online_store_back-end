@@ -5,16 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/main.ts",
+    "dev": "npm run run-seeds-migrate ; nodemon src/main.ts",
     "format": "prettier . --write",
     "lint": "eslint . --ignore-path .gitignore",
     "fix-style": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
     "build": "tsc",
-    "pre-build": "npm install && npm run build",
+    "pre-build": "npm install ; npm run run-seeds-migrate ; npm run build",
     "start": "node build/main.js",
     "db-connect": "psql postgres://maksym.nemera:QWErty1234678905@ep-small-cake-09230876.eu-central-1.aws.neon.tech/neondb",
-    "sync-tables": "ts-node src/syncTables.ts"
+    "sync-tables": "ts-node src/syncTables.ts",
+    "run-seeds": "npx sequelize-cli db:seed:all",
+    "run-migrations": "npx sequelize-cli db:migrate",
+    "run-seeds-migrate": "npm run run-migrations ; npm run run-seeds"
   },
   "repository": {
     "type": "git",
