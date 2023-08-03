@@ -2,7 +2,8 @@
 
 export enum SortByOptions {
   ID = 'id',
-  RANDOM = 'random',
   NEW = 'new',
+  RANDOM = 'random',
   DISCOUNT = 'discount',
+  PRICE = 'price',
 }

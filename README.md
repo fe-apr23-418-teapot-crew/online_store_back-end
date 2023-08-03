@@ -142,11 +142,32 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get a paginated list of products.
+        	Get a paginated list of products with sorting. Available sorting:
+            <br> - <strong>id</strong> = default sorting;
+            <br> - <strong>new</strong> = sorting by year and sorted by price ascending;
+            <br> - <strong>random</strong> = randomly sorting;
+            <br> - <strong>discount</strong> = sorting from biggest discount to lower;
+            <br> - <strong>price</strong> = sorting from lower price to bigger;
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	GET
+        </td>
+        <td>
+          <a href="https://four18-teapot-crew-dev.onrender.com/products?productType=phones">
+          	/products?productType=phones
+          </a>
+        </td>
+        <td>
+        	Get a filtered list of products by category, otherwise, if the category is not available get an empty array. Available category:
+            <br> - <strong>phones</strong>;
+            <br> - <strong>tablets</strong>;
+            <br> - <strong>accessories</strong>;
         </td>
     </tr>
     	<tr>
-        <th colspan="3">Phones</th>
+        	<th colspan="3">Phones</th>
     	</tr>
     <tr>
         <td>

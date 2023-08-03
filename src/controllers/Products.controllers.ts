@@ -10,13 +10,21 @@ const getAllProducts = async (req: Request, res: Response) => {
 
   const count = await productsService.count();
 
-  const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
+  const {
+    limit = count,
+    offset = 0,
+    sortBy = SortByOptions.ID,
+    productType,
+  } = req.query;
 
   const isSortByValid = Object.values(SortByOptions).includes(
     sortBy as SortByOptions,
   );
   const isLimitValid = !Number.isNaN(Number(limit));
   const isOffsetValid = !Number.isNaN(Number(offset));
+  const isProductCategoryValid = Object.values(ProductCategories).includes(
+    productType as ProductCategories,
+  );
 
   if (!isSortByValid || !isLimitValid || !isOffsetValid) {
     res.sendStatus(400);
@@ -24,10 +32,23 @@ const getAllProducts = async (req: Request, res: Response) => {
     return;
   }
 
+  let where: { category?: ProductCategories } = {};
+
+  if (productType) {
+    if (isProductCategoryValid) {
+      where = { category: productType as ProductCategories };
+    } else {
+      res.json([]);
+
+      return;
+    }
+  }
+
   const results = await productsService.findAndCountAll({
     limit: Number(limit),
     offset: Number(offset),
     sortBy: sortBy as SortByOptions,
+    where,
   });
 
   res.json(results);
@@ -117,5 +138,5 @@ export const productsController = {
   getOneProduct,
   recommendedProducts,
   newProducts,
-  discountedProducts: discountProducts,
+  discountProducts,
 };
