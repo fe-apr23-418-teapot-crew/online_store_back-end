@@ -10,7 +10,7 @@
     "lint": "eslint . --ignore-path .gitignore",
     "fix-style": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
-    "build": "tsc",
+    "build": "npx tsc",
     "pre-build": "npm install ; npm run run-seeds-migrate ; npm run build",
     "start": "node build/main.js",
     "db-connect": "psql postgres://maksym.nemera:QWErty1234678905@ep-small-cake-09230876.eu-central-1.aws.neon.tech/neondb",
