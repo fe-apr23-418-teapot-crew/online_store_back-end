@@ -2,7 +2,8 @@
 
 import { Request, Response } from 'express';
 import { ProductsService } from '../services/products.service';
-import { availableSortBy } from '../utils/constants';
+import { SortByOptions } from '../types/enums/SortingTypes';
+import { ProductCategories } from '../types/enums/ProductCategories';
 
 const getAllProducts = async (req: Request, res: Response) => {
   const productsService = new ProductsService();
@@ -11,8 +12,9 @@ const getAllProducts = async (req: Request, res: Response) => {
 
   const { limit = count, offset = 0, sortBy = 'id' } = req.query;
 
-  const isSortByValid =
-    typeof sortBy === 'string' && availableSortBy.includes(sortBy);
+  const isSortByValid = Object.values(SortByOptions).includes(
+    sortBy as SortByOptions,
+  );
   const isLimitValid = !Number.isNaN(Number(limit));
   const isOffsetValid = !Number.isNaN(Number(offset));
 
@@ -25,7 +27,7 @@ const getAllProducts = async (req: Request, res: Response) => {
   const results = await productsService.findAndCountAll({
     limit: Number(limit),
     offset: Number(offset),
-    sortBy,
+    sortBy: sortBy as SortByOptions,
   });
 
   res.json(results);
@@ -74,9 +76,23 @@ const recommendedProducts = async (req: Request, res: Response) => {
 
   const results = await productsService.findAndCountAll({
     where: {
-      category: foundProduct.category,
+      category: foundProduct.category as ProductCategories,
     },
-    sortBy: 'RANDOM',
+    sortBy: SortByOptions.RANDOM,
+  });
+
+  res.json(results);
+};
+
+const newProducts = async (req: Request, res: Response) => {
+  const productsService = new ProductsService();
+
+  const results = await productsService.findAndCountAll({
+    where: {
+      category: ProductCategories.PHONES,
+    },
+    sortBy: SortByOptions.YEAR,
+    limit: 15,
   });
 
   res.json(results);
@@ -86,4 +102,5 @@ export const productsController = {
   getAllProducts,
   getOneProduct,
   recommendedProducts,
+  newProducts,
 };

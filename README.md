@@ -85,6 +85,19 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
+        	<a href="https://four18-teapot-crew-dev.onrender.com/products/new">
+        		/products/new
+            </a>
+        </td>
+        <td>
+        	Get an object with count and rows containing a list of the <strong>15 newest phones</strong> sorted by price ascending
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	GET
+        </td>
+        <td>
           <a href="https://four18-teapot-crew-dev.onrender.com/products/1">
               /products/1
           </a>
@@ -132,7 +145,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get an object with count and rows containing a list of all phones.
+        	Get an object with count and rows containing a list of all phones with advanced information.
         </td>
     </tr>
     <tr>
@@ -161,7 +174,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get an object with count and rows containing a list of all tablets.
+        	Get an object with count and rows containing a list of all tablets with advanced information.
         </td>
     </tr>
     <tr>
@@ -190,7 +203,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get an object with count and rows containing a list of all accessories.
+        	Get an object with count and rows containing a list of all accessories with advanced information.
         </td>
     </tr>
     <tr>
