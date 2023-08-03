@@ -65,7 +65,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         </th>
     </tr>
     	<tr>
-        	<th colspan="3">Products</th>
+        <th colspan="3">Products</th>
     	</tr>
     <tr>
         <td>
@@ -74,7 +74,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         <td>
         	<a href="https://four18-teapot-crew-dev.onrender.com/products">
         		/products
-            </a>
+          </a>
         </td>
         <td>
         	Get an object with count and rows containing a list of all products.
@@ -87,7 +87,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         <td>
         	<a href="https://four18-teapot-crew-dev.onrender.com/products/new">
         		/products/new
-            </a>
+          </a>
         </td>
         <td>
         	Get an object with count and rows containing a list of the <strong>15 newest phones</strong> sorted by price ascending
@@ -98,8 +98,21 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
+        	<a href="https://four18-teapot-crew-dev.onrender.com/products/discount">
+        		/products/discount
+          </a>
+        </td>
+        <td>
+        	Get an object with count and rows containing a list of the <strong>15 more discounting price phones</strong> sorted by discount descending
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	GET
+        </td>
+        <td>
           <a href="https://four18-teapot-crew-dev.onrender.com/products/1">
-              /products/1
+            /products/1
           </a>
         </td>
         <td>
@@ -133,7 +146,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         </td>
     </tr>
     	<tr>
-        	<th colspan="3">Phones</th>
+        <th colspan="3">Phones</th>
     	</tr>
     <tr>
         <td>
@@ -162,7 +175,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         </td>
     </tr>
     	<tr>
-        	<th colspan="3">Tablets</th>
+        <th colspan="3">Tablets</th>
     	</tr>
     <tr>
         <td>
@@ -191,7 +204,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         </td>
     </tr>
     	<tr>
-        	<th colspan="3">Accessories</th>
+        <th colspan="3">Accessories</th>
     	</tr>
     <tr>
         <td>
@@ -220,7 +233,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         </td>
     </tr>
     	<tr>
-        	<th colspan="3">Images</th>
+        <th colspan="3">Images</th>
     	</tr>
     <tr>
         <td>

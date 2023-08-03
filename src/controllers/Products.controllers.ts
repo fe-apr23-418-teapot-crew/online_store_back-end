@@ -2,15 +2,15 @@
 
 import { Request, Response } from 'express';
 import { ProductsService } from '../services/products.service';
-import { SortByOptions } from '../types/enums/SortingTypes';
 import { ProductCategories } from '../types/enums/ProductCategories';
+import { SortByOptions } from '../types/enums/Sorting';
 
 const getAllProducts = async (req: Request, res: Response) => {
   const productsService = new ProductsService();
 
   const count = await productsService.count();
 
-  const { limit = count, offset = 0, sortBy = 'id' } = req.query;
+  const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
 
   const isSortByValid = Object.values(SortByOptions).includes(
     sortBy as SortByOptions,
@@ -91,7 +91,21 @@ const newProducts = async (req: Request, res: Response) => {
     where: {
       category: ProductCategories.PHONES,
     },
-    sortBy: SortByOptions.YEAR,
+    sortBy: SortByOptions.NEW,
+    limit: 15,
+  });
+
+  res.json(results);
+};
+
+const discountProducts = async (req: Request, res: Response) => {
+  const productsService = new ProductsService();
+
+  const results = await productsService.findAndCountAll({
+    where: {
+      category: ProductCategories.PHONES,
+    },
+    sortBy: SortByOptions.DISCOUNT,
     limit: 15,
   });
 
@@ -103,4 +117,5 @@ export const productsController = {
   getOneProduct,
   recommendedProducts,
   newProducts,
+  discountedProducts: discountProducts,
 };
