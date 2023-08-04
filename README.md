@@ -142,7 +142,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get a paginated list of products with sorting. Available sorting:
+        	Get a paginated list of products or any each of product(<strong>/phones?.., /tablets?.., /accessories?..</strong>) with sorting. Available sorting:
             <br> - <strong>id</strong> = default sorting;
             <br> - <strong>new</strong> = sorting by year and sorted by price ascending;
             <br> - <strong>random</strong> = randomly sorting;
@@ -179,7 +179,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get an object with count and rows containing a list of all phones with advanced information.
+        	Get an object with count and rows containing a list of all phones.
         </td>
     </tr>
     <tr>
@@ -208,7 +208,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get an object with count and rows containing a list of all tablets with advanced information.
+        	Get an object with count and rows containing a list of all tablets.
         </td>
     </tr>
     <tr>
@@ -237,7 +237,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
           </a>
         </td>
         <td>
-        	Get an object with count and rows containing a list of all accessories with advanced information.
+        	Get an object with count and rows containing a list of all accessories.
         </td>
     </tr>
     <tr>

@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import { ProductsService } from '../services/products.service';
 import { ProductCategories } from '../types/enums/ProductCategories';
 import { SortByOptions } from '../types/enums/Sorting';
+import { validateQueryParameters } from '../utils/helpers';
 
 const getAllProducts = async (req: Request, res: Response) => {
   const productsService = new ProductsService();
@@ -17,12 +18,15 @@ const getAllProducts = async (req: Request, res: Response) => {
     productType,
   } = req.query;
 
-  const isSortByValid = Object.values(SortByOptions).includes(
-    sortBy as SortByOptions,
-  );
-  const isLimitValid = !Number.isNaN(Number(limit));
-  const isOffsetValid = !Number.isNaN(Number(offset));
-  const isProductCategoryValid = Object.values(ProductCategories).includes(
+  const { 
+    isSortByValid, 
+    isLimitValid, 
+    isOffsetValid, 
+    isProductCategoryValid, 
+  } = validateQueryParameters(
+    +limit, 
+    +offset, 
+    sortBy as SortByOptions, 
     productType as ProductCategories,
   );
 
