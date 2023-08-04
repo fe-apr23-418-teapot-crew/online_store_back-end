@@ -61,9 +61,9 @@ export const validateQueryParameters = (
     Object.values(ProductCategories).includes(productType);
 
   return {
-    isSortByValid, 
-    isLimitValid, 
-    isOffsetValid, 
+    isSortByValid,
+    isLimitValid,
+    isOffsetValid,
     isProductCategoryValid,
   };
 };

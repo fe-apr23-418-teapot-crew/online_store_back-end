@@ -18,17 +18,13 @@ const getAllProducts = async (req: Request, res: Response) => {
     productType,
   } = req.query;
 
-  const { 
-    isSortByValid, 
-    isLimitValid, 
-    isOffsetValid, 
-    isProductCategoryValid, 
-  } = validateQueryParameters(
-    +limit, 
-    +offset, 
-    sortBy as SortByOptions, 
-    productType as ProductCategories,
-  );
+  const { isSortByValid, isLimitValid, isOffsetValid, isProductCategoryValid } =
+    validateQueryParameters(
+      +limit,
+      +offset,
+      sortBy as SortByOptions,
+      productType as ProductCategories,
+    );
 
   if (!isSortByValid || !isLimitValid || !isOffsetValid) {
     res.sendStatus(400);

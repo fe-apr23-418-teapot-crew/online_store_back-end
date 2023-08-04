@@ -56,21 +56,10 @@ const getAllPhones = async (req: Request, res: Response) => {
 
   const count = await phonesService.count();
 
-  const {
-    limit = count,
-    offset = 0,
-    sortBy = SortByOptions.ID,
-  } = req.query;
+  const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
 
-  const { 
-    isSortByValid, 
-    isLimitValid, 
-    isOffsetValid, 
-  } = validateQueryParameters(
-    +limit, 
-    +offset, 
-    sortBy as SortByOptions, 
-  );
+  const { isSortByValid, isLimitValid, isOffsetValid } =
+    validateQueryParameters(+limit, +offset, sortBy as SortByOptions);
 
   if (!isSortByValid || !isLimitValid || !isOffsetValid) {
     res.sendStatus(400);
