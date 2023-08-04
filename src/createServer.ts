@@ -1,5 +1,6 @@
 'use strict';
 
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import productsRouter from './routes/products';
@@ -7,6 +8,8 @@ import phonesRouter from './routes/phones';
 import tabletsRouter from './routes/tablets';
 import accessoriesRouter from './routes/accessories';
 import { initDB } from './initDB';
+
+dotenv.config();
 
 export const createServer = () => {
   const app = express();
@@ -24,6 +27,12 @@ export const createServer = () => {
   app.use('/accessories', express.json(), accessoriesRouter);
 
   app.use(express.static('public'));
+
+  app.get('/', (req, res) => {
+    const NODE_ENV = process.env.NODE_ENV;
+
+    res.send(NODE_ENV);
+  });
 
   return app;
 };

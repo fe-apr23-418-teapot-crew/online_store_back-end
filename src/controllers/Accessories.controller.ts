@@ -1,54 +1,11 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { AccessoriesData } from '../types/AccessoriesType';
 import { AccessoriesService } from '../services/accessories.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductsService } from '../services/products.service';
 import { ProductCategories } from '../types/enums/ProductCategories';
-
-const normalize = ({
-  id,
-  namespaceId,
-  name,
-  capacityAvailable,
-  capacity,
-  priceRegular,
-  priceDiscount,
-  colorsAvailable,
-  color,
-  images,
-  description,
-  screen,
-  resolution,
-  processor,
-  ram,
-  camera,
-  zoom,
-  cell,
-}: AccessoriesData): AccessoriesData => {
-  return {
-    id,
-    namespaceId,
-    name,
-    capacityAvailable,
-    capacity,
-    priceRegular,
-    priceDiscount,
-    colorsAvailable,
-    color,
-    images,
-    description,
-    screen,
-    resolution,
-    processor,
-    ram,
-    camera,
-    zoom,
-    cell,
-  };
-};
 
 const getAllAccessories = async (req: Request, res: Response) => {
   const accessoriesService = new AccessoriesService();
@@ -101,7 +58,7 @@ const getOneAccessories = async (req: Request, res: Response) => {
     return;
   }
 
-  res.json(normalize(foundAccessories));
+  res.json(foundAccessories);
 };
 
 export const accessoriesController = {

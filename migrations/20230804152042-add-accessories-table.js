@@ -65,11 +65,9 @@ module.exports = {
       },
       camera: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       zoom: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       cell: {
         type: Sequelize.ARRAY(Sequelize.STRING),
