@@ -2,7 +2,7 @@
 const TABLE_NAME = 'tablets';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable(TABLE_NAME, {
       id: {
         type: Sequelize.STRING,
@@ -79,7 +79,7 @@ module.exports = {
   },
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable(TABLE_NAME);
-  }
+  },
 };
