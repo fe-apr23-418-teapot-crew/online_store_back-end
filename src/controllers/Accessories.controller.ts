@@ -3,6 +3,10 @@
 import { Request, Response } from 'express';
 import { AccessoriesData } from '../types/AccessoriesType';
 import { AccessoriesService } from '../services/accessories.service';
+import { SortByOptions } from '../types/enums/Sorting';
+import { validateQueryParameters } from '../utils/helpers';
+import { ProductsService } from '../services/products.service';
+import { ProductCategories } from '../types/enums/ProductCategories';
 
 const normalize = ({
   id,
@@ -48,12 +52,33 @@ const normalize = ({
 
 const getAllAccessories = async (req: Request, res: Response) => {
   const accessoriesService = new AccessoriesService();
+  const productsService = new ProductsService();
 
-  const accessories = await accessoriesService.findAndCountAll();
+  const count = await accessoriesService.count();
+
+  const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
+
+  const { isSortByValid, isLimitValid, isOffsetValid } =
+    validateQueryParameters(+limit, +offset, sortBy as SortByOptions);
+
+  if (!isSortByValid || !isLimitValid || !isOffsetValid) {
+    res.sendStatus(400);
+
+    return;
+  }
+
+  const where = { category: ProductCategories.ACCESSORIES };
+
+  const accessories = await productsService.findAndCountAll({
+    limit: Number(limit),
+    offset: Number(offset),
+    sortBy: sortBy as SortByOptions,
+    where,
+  });
 
   res.json({
     count: accessories.count,
-    rows: accessories.rows.map(normalize),
+    rows: accessories.rows,
   });
 };
 

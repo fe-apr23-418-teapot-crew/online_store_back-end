@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+// const developmentCredentials = require('./dbCredentials/dbCredentials.development.js');
+// const testCredentials = require('./dbCredentials/dbCredentials.test.js');
+// const productionCredentials = require('./dbCredentials/dbCredentials.production.js');
+
 const DB_HOST = 'ep-small-cake-09230876.eu-central-1.aws.neon.tech';
 const DB_PORT = 5432;
 const DB_USERNAME = 'maksym.nemera';
@@ -13,24 +18,27 @@ const dbCredentials = {
 };
 
 const dialectConfig = {
+  seederStorage: 'sequelize',
   dialect: 'postgres',
   dialectOptions: {
     ssl: true,
   },
 };
 
-module.exports = {
-  development: {
-    ...dbCredentials,
-    ...dialectConfig,
-  },
-  test: {
-    ...dbCredentials,
-    ...dialectConfig,
-    test: true,
-  },
-  production: {
-    ...dbCredentials,
-    ...dialectConfig,
-  },
+const development = {
+  ...dbCredentials,
+  ...dialectConfig,
 };
+
+const test = {
+  ...dbCredentials,
+  ...dialectConfig,
+  test: true,
+};
+
+const production = {
+  ...dbCredentials,
+  ...dialectConfig,
+};
+
+module.exports = { development, test, production };
