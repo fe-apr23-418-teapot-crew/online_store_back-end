@@ -1,6 +1,6 @@
 'use strict';
 import { Products } from '../models/products.model';
-import { FindAllOptions } from '../types/findAllOptions';
+import { FindAllOptions } from '../types/FindAllOptions';
 import { getPagination } from '../utils/helpers';
 
 export class ProductsService {

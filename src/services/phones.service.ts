@@ -1,6 +1,6 @@
 'use strict';
 import { Phones } from '../models/phones.model';
-import { FindAllOptions } from '../types/findAllOptions';
+import { FindAllOptions } from '../types/FindAllOptions';
 import { getPagination } from '../utils/helpers';
 
 export class PhonesService {

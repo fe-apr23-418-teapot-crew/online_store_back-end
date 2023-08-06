@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development npm run run-seeds-migrate:dev & nodemon src/main.ts",
+    "prod": "cross-env NODE_ENV=production npm run run-seeds-migrate:prod & cross-env NODE_ENV=production nodemon src/main.ts",
+    "dev": "cross-env NODE_ENV=development npm run run-seeds-migrate:dev & cross-env NODE_ENV=development nodemon src/main.ts",
+    "qa": "cross-env NODE_ENV=qa npm run run-seeds-migrate:qa & cross-env NODE_ENV=qa nodemon src/main.ts",
     "format": "prettier . --write",
     "lint": "eslint . --ignore-path .gitignore",
     "fix-style": "npm run format && npm run lint -- --fix",
@@ -12,7 +14,6 @@
     "build": "cross-env NODE_ENV=production npx tsc",
     "pre-build": "npm install & npm run run-seeds-migrate:prod & npm run build",
     "start": "cross-env NODE_ENV=production node build/main.js",
-    "sync-tables": "ts-node src/syncTables.ts",
     "run-seeds": "npx sequelize-cli db:seed:all",
     "run-migrations": "npx sequelize-cli db:migrate",
     "run-seeds-migrate:prod": "cross-env NODE_ENV=production npm run run-migrations & cross-env NODE_ENV=production npm run run-seeds",

@@ -1,7 +1,14 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const developmentCredentials = require('./dbCredentials/dbCredentials.development.js');
-const qaCredentials = require('./dbCredentials/dbCredentials.qa.js');
-const productionCredentials = require('./dbCredentials/dbCredentials.production.js');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require('dotenv');
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+
+const environmentCredentials = {
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+};
 
 const dialectConfig = {
   seederStorage: 'sequelize',
@@ -12,17 +19,17 @@ const dialectConfig = {
 };
 
 const development = {
-  ...developmentCredentials,
+  ...environmentCredentials,
   ...dialectConfig,
 };
 
 const qa = {
-  ...qaCredentials,
+  ...environmentCredentials,
   ...dialectConfig,
 };
 
 const production = {
-  ...productionCredentials,
+  ...environmentCredentials,
   ...dialectConfig,
 };
 
