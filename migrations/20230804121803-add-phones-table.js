@@ -1,20 +1,15 @@
 'use strict';
-const TABLE_NAME = 'products';
+const TABLE_NAME = 'phones';
 
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable(TABLE_NAME, {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      category: {
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
       },
-      itemId: {
+      namespaceId: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -22,23 +17,45 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      fullPrice: {
+      capacityAvailable: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+      },
+      capacity: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      priceRegular: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      price: {
+      priceDiscount: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      colorsAvailable: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+      },
+      color: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      images: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: false,
+      },
+      description: {
+        type: Sequelize.JSONB,
         allowNull: false,
       },
       screen: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      capacity: {
+      resolution: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      color: {
+      processor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -46,12 +63,16 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      year: {
-        type: Sequelize.INTEGER,
+      camera: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      image: {
+      zoom: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      cell: {
+        type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false,
       },
     });

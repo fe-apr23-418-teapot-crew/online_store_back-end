@@ -1,54 +1,11 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { PhonesData } from '../types/Phones';
 import { PhonesService } from '../services/phones.service';
 import { ProductsService } from '../services/products.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductCategories } from '../types/enums/ProductCategories';
-
-const normalize = ({
-  id,
-  namespaceId,
-  name,
-  capacityAvailable,
-  capacity,
-  priceRegular,
-  priceDiscount,
-  colorsAvailable,
-  color,
-  images,
-  description,
-  screen,
-  resolution,
-  processor,
-  ram,
-  camera,
-  zoom,
-  cell,
-}: PhonesData): PhonesData => {
-  return {
-    id,
-    namespaceId,
-    name,
-    capacityAvailable,
-    capacity,
-    priceRegular,
-    priceDiscount,
-    colorsAvailable,
-    color,
-    images,
-    description,
-    screen,
-    resolution,
-    processor,
-    ram,
-    camera,
-    zoom,
-    cell,
-  };
-};
 
 const getAllPhones = async (req: Request, res: Response) => {
   const phonesService = new PhonesService();
@@ -101,7 +58,7 @@ const getOnePhone = async (req: Request, res: Response) => {
     return;
   }
 
-  res.json(normalize(foundPhone));
+  res.json(foundPhone);
 };
 
 export const phonesController = {

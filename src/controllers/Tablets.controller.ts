@@ -1,54 +1,11 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { TabletsData } from '../types/TabletsTypes';
 import { TabletsService } from '../services/tablets.service';
 import { ProductsService } from '../services/products.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductCategories } from '../types/enums/ProductCategories';
-
-const normalize = ({
-  id,
-  namespaceId,
-  name,
-  capacityAvailable,
-  capacity,
-  priceRegular,
-  priceDiscount,
-  colorsAvailable,
-  color,
-  images,
-  description,
-  screen,
-  resolution,
-  processor,
-  ram,
-  camera,
-  zoom,
-  cell,
-}: TabletsData): TabletsData => {
-  return {
-    id,
-    namespaceId,
-    name,
-    capacityAvailable,
-    capacity,
-    priceRegular,
-    priceDiscount,
-    colorsAvailable,
-    color,
-    images,
-    description,
-    screen,
-    resolution,
-    processor,
-    ram,
-    camera,
-    zoom,
-    cell,
-  };
-};
 
 const getAllTablets = async (req: Request, res: Response) => {
   const tabletsService = new TabletsService();
@@ -101,7 +58,7 @@ const getOneTablet = async (req: Request, res: Response) => {
     return;
   }
 
-  res.json(normalize(foundTablet));
+  res.json(foundTablet);
 };
 
 export const tabletsController = {

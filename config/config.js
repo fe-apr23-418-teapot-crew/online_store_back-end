@@ -1,20 +1,13 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-// const developmentCredentials = require('./dbCredentials/dbCredentials.development.js');
-// const testCredentials = require('./dbCredentials/dbCredentials.test.js');
-// const productionCredentials = require('./dbCredentials/dbCredentials.production.js');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require('dotenv');
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-const DB_HOST = 'ep-small-cake-09230876.eu-central-1.aws.neon.tech';
-const DB_PORT = 5432;
-const DB_USERNAME = 'maksym.nemera';
-const DB_PASSWORD = 'QWErty1234678905';
-const DB_NAME = 'neondb';
-
-const dbCredentials = {
-  username: DB_USERNAME,
-  password: DB_PASSWORD,
-  database: DB_NAME,
-  host: DB_HOST,
-  port: DB_PORT,
+const environmentCredentials = {
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
 };
 
 const dialectConfig = {
@@ -26,19 +19,18 @@ const dialectConfig = {
 };
 
 const development = {
-  ...dbCredentials,
+  ...environmentCredentials,
   ...dialectConfig,
 };
 
-const test = {
-  ...dbCredentials,
+const qa = {
+  ...environmentCredentials,
   ...dialectConfig,
-  test: true,
 };
 
 const production = {
-  ...dbCredentials,
+  ...environmentCredentials,
   ...dialectConfig,
 };
 
-module.exports = { development, test, production };
+module.exports = { development, qa, production };
