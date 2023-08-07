@@ -1,6 +1,6 @@
 'use strict';
 import { Accessories } from '../models/Accessories.model';
-import { FindAllOptions } from '../types/FindAllOptions';
+import { FindAllOptions } from '../types/findAllOptions';
 import { getPagination } from '../utils/helpers';
 
 export class AccessoriesService {

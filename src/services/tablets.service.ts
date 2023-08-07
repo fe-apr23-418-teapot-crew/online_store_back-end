@@ -1,6 +1,6 @@
 'use strict';
 import { Tablets } from '../models/tablets.model';
-import { FindAllOptions } from '../types/FindAllOptions';
+import { FindAllOptions } from '../types/findAllOptions';
 import { getPagination } from '../utils/helpers';
 
 export class TabletsService {
