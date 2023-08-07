@@ -8,7 +8,6 @@ import phonesRouter from './routes/phones';
 import tabletsRouter from './routes/tablets';
 import accessoriesRouter from './routes/accessories';
 import { initDB } from './initDB';
-import path from 'path';
 
 dotenv.config();
 
@@ -28,17 +27,6 @@ export const createServer = () => {
   app.use('/accessories', express.json(), accessoriesRouter);
 
   app.use(express.static('public'));
-
-  app.get('/', (req, res) => {
-    const NODE_ENV = process.env.NODE_ENV;
-
-    if (NODE_ENV === 'production') {
-      const filePath = path.join(__dirname, 'index.html');
-      res.sendFile(filePath);
-    } else {
-      res.send(`You are on the ${NODE_ENV} version!`);
-    }
-  });
 
   return app;
 };

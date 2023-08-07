@@ -8,9 +8,14 @@ This repository contains the source code for the Online-Store-API project, which
 
 The Online Store API provides the following features:
 
-- Product Endpoints: Endpoints to retrieve information about products, including getting all products, getting a single product by ID.
-- Pagination: Support for paginated results when fetching multiple products.
-- Image Upload: Endpoints to upload product images and serve them to the frontend.
+- **Product Endpoints:** Endpoints to retrieve information about products, including getting all products, getting each product as phones, tablets, and accessories.
+- **Pagination:** Support for paginated results when fetching multiple products.
+- **Image Upload:** Endpoints to upload product images and serve them to the front end.
+
+**Additional features:**
+
+- **Sorting:** The API supports sorting products by various criteria, such as price, newest, and discount.
+- **Filtering:** The API supports filtering products by category, price range, and other criteria.
 
 ## Usage
 
@@ -25,28 +30,73 @@ Feel free to customize the content, styles, and functionality of the Online-stor
 - sequelize
 - [render.com](https://render.com/) for hosting the live demo
 
-## Getting Started
+## <a id="getting_started">Getting Started</a>
 
 To get started with the Online-Store-API, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/online_store_back-end.git`
-2. Install dependencies: `npm install`
-3. Set up the PostgreSQL database and configure the connection in the **.env** file.
-4. Start the server: `npm run dev`
+1. Clone the repository:
+
+```shell
+git clone https://github.com/your-username/online_store_back-end.git
+```
+
+2. Install dependencies:
+
+```shell
+npm install
+```
+
+3. Set up PostgreSQL Database:
+   - Create three environment-specific _.env_ files: **.env.development**. Also, you could create **.env.production** for deployment, and **.env.qa** for testing.
+   - Open the **.env.development** file and add your PostgreSQL database configuration. Use the following sample as a guide:
+
+```dotenv
+DB_USERNAME=db_username
+DB_PASSWORD=db_password
+DB_NAME=db_name
+DB_HOST=db_host
+DB_PORT=db_port
+NODE_ENV=development # this will chengable for each .env file (development, production, qa);
+```
+
+4. Create tables:
+
+```shell
+npm run create-table:dev
+```
+
+5. Start the server:
+
+```shell
+npm run dev
+```
 
 ## Contributing
 
 If you would like to contribute to this project, you can follow these steps:
 
 1. Fork the repository.
-2. Clone the forked repository: `git clone https://github.com/your-username/online_store_back-end.git`
-3. Navigate to the project directory: `cd online_store_back-end`
-4. Create a new branch: `git switch -c feature/your-feature`
-5. Install dependencies: `npm install`
-6. Make your changes and test them locally.
-7. Commit your changes: `git commit -m 'Add some feature'`
-8. Push the branch to your forked repository: `git push origin feature/your-feature`
-9. Open a pull request in this repository.
+2. Do what describes in [Getting Started](#getting_started)
+3. Create a new branch:
+
+```shell
+git switch -c feature/your-feature
+```
+
+4. Make your changes and test them locally.
+5. Commit your changes:
+
+```shell
+git commit -m 'Add some feature'
+```
+
+6. Push the branch to your forked repository:
+
+```shell
+git push origin feature/your-feature
+```
+
+7. Open a pull request in this repository.
 
 ## Endpoints
 
