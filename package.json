@@ -11,7 +11,7 @@
     "lint": "eslint . --ignore-path .gitignore",
     "fix-style": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
-    "build": "cross-env NODE_ENV=production npx tsc",
+    "build": "npx tsc",
     "pre-build": "npm install && npm install --only=dev && npm run run-seeds-migrate:prod && npm run build",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "run-seeds": "npx sequelize-cli db:seed:all",
