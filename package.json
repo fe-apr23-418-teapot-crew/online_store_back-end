@@ -12,7 +12,7 @@
     "fix-style": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
     "build": "cross-env NODE_ENV=production npx tsc",
-    "pre-build": "npm install & npm run run-seeds-migrate:prod & npm run build",
+    "pre-build": "npm install & npm run build",
     "start": "cross-env NODE_ENV=production node build/main.js",
     "run-seeds": "npx sequelize-cli db:seed:all",
     "run-migrations": "npx sequelize-cli db:migrate",
@@ -43,8 +43,7 @@
     "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.32.1",
-    "sequelize-typescript": "^2.1.5",
-    "cross-env": "^7.0.3"
+    "sequelize-typescript": "^2.1.5"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
@@ -58,7 +57,8 @@
     "nodemon": "^3.0.1",
     "prettier": "3.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "cross-env": "^7.0.3"
   },
   "lint-staged": {
     "*.js": "npm run lint"
