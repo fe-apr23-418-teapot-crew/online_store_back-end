@@ -12,7 +12,7 @@
     "fix-style": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
     "build": "npx tsc",
-    "pre-build": "npm install & npm run run-seeds-migrate:prod & npm run build",
+    "pre-build": "npm install & npm run build",
     "start": "node build/main.js",
     "run-seeds": "npx sequelize-cli db:seed:all",
     "run-migrations": "npx sequelize-cli db:migrate",
