@@ -7,6 +7,12 @@ export class ProductsService {
   findById(id: number) {
     return Products.findByPk(id);
   }
+  //          to include all details about device
+  // findById(id: number) {
+  //   return Products.findByPk(id, {
+  //     include: ProductsDevice,
+  //   });
+  // }
 
   findAndCountAll(options: FindAllOptions = {}) {
     const { limit, offset, sortBy, where } = options;
