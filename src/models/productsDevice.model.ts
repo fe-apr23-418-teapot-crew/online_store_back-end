@@ -9,17 +9,17 @@ import {
   Table,
 } from 'sequelize-typescript';
 import {
-  AccessoriesData,
-  AccessoriesDescription,
-} from '../types/AccessoriesType';
+  ProductsDeviceInterface,
+  ProductsDeviceDescription,
+} from '../types/ProductsDevice';
 
 @Table({
-  tableName: 'accessories',
+  tableName: 'products_device',
   timestamps: false,
 })
-export class Accessories extends Model<
-  AccessoriesData,
-  Partial<AccessoriesData>
+export class ProductsDevice extends Model<
+  ProductsDeviceInterface,
+  Partial<ProductsDeviceInterface>
 > {
   @PrimaryKey
   @AllowNull(false)
@@ -91,7 +91,7 @@ export class Accessories extends Model<
   @Column({
     type: DataType.JSONB,
   })
-    description: AccessoriesDescription[];
+    description: ProductsDeviceDescription[];
 
   @AllowNull(false)
   @Column({

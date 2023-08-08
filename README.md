@@ -1,4 +1,4 @@
-# [Online-store-API](https://four18-teapot-crew-dev.onrender.com/)
+# [Online-store-API](https://online-store-api-swbg.onrender.com/)
 
 ## Description
 
@@ -100,7 +100,7 @@ git push origin feature/your-feature
 
 ## Endpoints
 
-The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](https://four18-teapot-crew-dev.onrender.com/)**
+The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](https://online-store-api-swbg.onrender.com/)**
 
 <table>
     <tr>
@@ -122,7 +122,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-        	<a href="https://four18-teapot-crew-dev.onrender.com/products">
+        	<a href="https://online-store-api-swbg.onrender.com/products">
         		/products
           </a>
         </td>
@@ -135,7 +135,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-        	<a href="https://four18-teapot-crew-dev.onrender.com/products/new">
+        	<a href="https://online-store-api-swbg.onrender.com/products/new">
         		/products/new
           </a>
         </td>
@@ -148,7 +148,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-        	<a href="https://four18-teapot-crew-dev.onrender.com/products/discount">
+        	<a href="https://online-store-api-swbg.onrender.com/products/discount">
         		/products/discount
           </a>
         </td>
@@ -161,7 +161,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/products/1">
+          <a href="https://online-store-api-swbg.onrender.com/products/1">
             /products/1
           </a>
         </td>
@@ -174,7 +174,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/products/1/recommended">
+          <a href="https://online-store-api-swbg.onrender.com/products/1/recommended">
           	/products/1/recommended
           </a>
         </td>
@@ -187,7 +187,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/products?limit=2&offset=10&sortBy=price">
+          <a href="https://online-store-api-swbg.onrender.com/products?limit=2&offset=10&sortBy=price">
           	/products?limit=2&offset=10&sortBy=price
           </a>
         </td>
@@ -205,7 +205,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/products?productType=phones">
+          <a href="https://online-store-api-swbg.onrender.com/products?productType=phones">
           	/products?productType=phones
           </a>
         </td>
@@ -224,7 +224,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/phones">
+          <a href="https://online-store-api-swbg.onrender.com/phones">
           	/phones
           </a>
         </td>
@@ -237,7 +237,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/phones/apple-iphone-11-128gb-green">
+          <a href="https://online-store-api-swbg.onrender.com/phones/apple-iphone-11-128gb-green">
           	/phones/apple-iphone-11-128gb-green
           </a>
         </td>
@@ -253,7 +253,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/tablets">
+          <a href="https://online-store-api-swbg.onrender.com/tablets">
           	/tablets
           </a>
         </td>
@@ -266,7 +266,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/tablets/apple-ipad-pro-11-2021-256gb-spacegray">
+          <a href="https://online-store-api-swbg.onrender.com/tablets/apple-ipad-pro-11-2021-256gb-spacegray">
           	/tablets/apple-ipad-pro-11-2021-256gb-spacegray
           </a>
         </td>
@@ -282,7 +282,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/accessories">
+          <a href="https://online-store-api-swbg.onrender.com/accessories">
           	/accessories
           </a>
         </td>
@@ -295,7 +295,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/accessories/apple-watch-series-3-38mm-gold">
+          <a href="https://online-store-api-swbg.onrender.com/accessories/apple-watch-series-3-38mm-gold">
           	/accessories/apple-watch-series-3-38mm-gold
           </a>
         </td>
@@ -311,7 +311,7 @@ The base URL for the API is: **[https://four18-teapot-crew-dev.onrender.com/](ht
         	GET
         </td>
         <td>
-          <a href="https://four18-teapot-crew-dev.onrender.com/img/phones/apple-iphone-7/black/00.webp">
+          <a href="https://online-store-api-swbg.onrender.com/img/phones/apple-iphone-7/black/00.webp">
           	/img/phones/apple-iphone-7/black/00.webp
           </a>
         </td>

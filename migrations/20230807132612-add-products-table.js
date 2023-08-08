@@ -16,6 +16,10 @@ module.exports = {
       },
       itemId: {
         type: Sequelize.STRING,
+        references: {
+          model: 'products_device',
+          key: 'id',
+        },
         allowNull: false,
       },
       name: {

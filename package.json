@@ -19,9 +19,9 @@
     "run-seeds-migrate:prod": "cross-env NODE_ENV=production npm run run-migrations & cross-env NODE_ENV=production npm run run-seeds",
     "run-seeds-migrate:dev": "cross-env NODE_ENV=development npm run run-migrations & cross-env NODE_ENV=development npm run run-seeds",
     "run-seeds-migrate:qa": "cross-env NODE_ENV=qa npm run run-migrations & cross-env NODE_ENV=qa npm run run-seeds",
-    "create-table:prod": "cross-env NODE_ENV=production sequelize-cli db:create",
-    "create-table:dev": "cross-env NODE_ENV=development sequelize-cli db:create",
-    "create-table:qa": "cross-env NODE_ENV=qa sequelize-cli db:create"
+    "create-db:prod": "cross-env NODE_ENV=production sequelize-cli db:create",
+    "create-db:dev": "cross-env NODE_ENV=development sequelize-cli db:create",
+    "create-db:qa": "cross-env NODE_ENV=qa sequelize-cli db:create"
   },
   "repository": {
     "type": "git",

@@ -4,10 +4,12 @@ import {
   AllowNull,
   Column,
   DataType,
+  ForeignKey,
   Model,
   Table,
 } from 'sequelize-typescript';
 import { ProductData } from '../types/Products';
+import { ProductsDevice } from './productsDevice.model';
 
 @Table({
   tableName: 'products',
@@ -21,6 +23,7 @@ export class Products extends Model<ProductData, Partial<ProductData>> {
     category: string;
 
   @AllowNull(false)
+  @ForeignKey(() => ProductsDevice)
   @Column({
     type: DataType.STRING,
     field: 'item_id',
