@@ -2,6 +2,7 @@
 
 import {
   AllowNull,
+  BelongsTo,
   Column,
   DataType,
   ForeignKey,
@@ -84,4 +85,11 @@ export class Products extends Model<ProductData, Partial<ProductData>> {
     type: DataType.STRING,
   })
     image: string;
+
+  @BelongsTo(() => ProductsDevice, {
+    onDelete: 'RESTRICT',
+    foreignKey: 'itemId',
+    targetKey: 'id',
+  })
+    products_device: ProductsDevice | null;
 }
