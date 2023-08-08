@@ -65,7 +65,13 @@ NODE_ENV=development # this will chengable for each .env file (development, prod
 npm run create-table:dev
 ```
 
-5. Start the server:
+5. Run migrates and seeds:
+
+```shell
+npm run run-seeds-migrate:dev
+```
+
+6. Start the server:
 
 ```shell
 npm run dev
@@ -198,6 +204,19 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
             <br> - <strong>random</strong> = randomly sorting;
             <br> - <strong>discount</strong> = sorting from biggest discount to lower;
             <br> - <strong>price</strong> = sorting from lower price to bigger;
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	GET
+        </td>
+        <td>
+          <a href="https://online-store-api-swbg.onrender.com/products?name=iphone 7 32gb">
+          	/products?name=iphone 7 32gb
+          </a>
+        </td>
+        <td>
+        	Get a filtered list of products by name, case insensitive. This works for each category(<strong>/phones?.., /tablets?.., /accessories?..</strong>)
         </td>
     </tr>
     <tr>
