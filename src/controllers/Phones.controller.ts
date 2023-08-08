@@ -1,17 +1,17 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { PhonesService } from '../services/phones.service';
 import { ProductsService } from '../services/products.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductCategories } from '../types/enums/ProductCategories';
+import { ProductsDeviceService } from '../services/productsDevice.service';
 
 const getAllPhones = async (req: Request, res: Response) => {
-  const phonesService = new PhonesService();
+  const productsDeviceService = new ProductsDeviceService();
   const productsService = new ProductsService();
 
-  const count = await phonesService.count();
+  const count = await productsDeviceService.count();
 
   const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
 
@@ -40,7 +40,7 @@ const getAllPhones = async (req: Request, res: Response) => {
 };
 
 const getOnePhone = async (req: Request, res: Response) => {
-  const phonesService = new PhonesService();
+  const productsDeviceService = new ProductsDeviceService();
 
   const { phoneId } = req.params;
 
@@ -50,7 +50,7 @@ const getOnePhone = async (req: Request, res: Response) => {
     return;
   }
 
-  const foundPhone = await phonesService.findById(phoneId);
+  const foundPhone = await productsDeviceService.findById(phoneId);
 
   if (!foundPhone) {
     res.sendStatus(404);

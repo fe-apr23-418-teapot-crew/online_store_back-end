@@ -1,12 +1,13 @@
 'use strict';
 
-export interface PhonesDescription {
+export interface ProductsDeviceDescription {
   title: string;
   text: string[];
 }
 
-export interface PhonesData {
+export interface ProductsDeviceInterface {
   id?: string;
+  category: string;
   namespaceId: string;
   name: string;
   capacityAvailable: string[];
@@ -16,7 +17,7 @@ export interface PhonesData {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: PhonesDescription[];
+  description: ProductsDeviceDescription[];
   screen: string;
   resolution: string;
   processor: string;

@@ -1,8 +1,12 @@
 'use strict';
-const TABLE_NAME = 'tablets';
+const TABLE_NAME = 'products_device';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const phones = require('../src/utils/db/api/phones.json');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const tablets = require('../src/utils/db/api/tablets.json');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const accessories = require('../src/utils/db/api/accessories.json');
 
 const columnsToRename = [
   {
@@ -30,11 +34,13 @@ const columnsToRename = [
 module.exports = {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async up(queryInterface, Sequelize) {
+    const allData = [...phones, ...tablets, ...accessories];
+
     await queryInterface.bulkInsert(
       TABLE_NAME,
-      tablets.map((tablet) => ({
-        ...tablet,
-        description: JSON.stringify(tablet.description),
+      allData.map((device) => ({
+        ...device,
+        description: JSON.stringify(device.description),
       })),
     );
 

@@ -1,3 +1,4 @@
+'use strict';
 import { ProductCategories } from './enums/ProductCategories';
 import { SortByOptions } from './enums/Sorting';
 

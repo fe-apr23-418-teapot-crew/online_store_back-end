@@ -1,11 +1,11 @@
 'use strict';
-import { Phones } from '../models/phones.model';
+import { ProductsDevice } from '../models/productsDevice.model';
 import { FindAllOptions } from '../types/findAllOptions';
 import { getPagination } from '../utils/helpers';
 
-export class PhonesService {
+export class ProductsDeviceService {
   findById(id: string) {
-    return Phones.findByPk(id);
+    return ProductsDevice.findByPk(id);
   }
 
   findAndCountAll(options: FindAllOptions = {}) {
@@ -13,7 +13,7 @@ export class PhonesService {
 
     const orderBy = getPagination(sortBy);
 
-    return Phones.findAndCountAll({
+    return ProductsDevice.findAndCountAll({
       limit,
       offset,
       order: orderBy,
@@ -22,6 +22,6 @@ export class PhonesService {
   }
 
   count() {
-    return Phones.count();
+    return ProductsDevice.count();
   }
 }

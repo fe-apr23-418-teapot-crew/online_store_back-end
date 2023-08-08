@@ -1,17 +1,17 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { AccessoriesService } from '../services/accessories.service';
+import { ProductsDeviceService } from '../services/productsDevice.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductsService } from '../services/products.service';
 import { ProductCategories } from '../types/enums/ProductCategories';
 
 const getAllAccessories = async (req: Request, res: Response) => {
-  const accessoriesService = new AccessoriesService();
+  const productsDeviceService = new ProductsDeviceService();
   const productsService = new ProductsService();
 
-  const count = await accessoriesService.count();
+  const count = await productsDeviceService.count();
 
   const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
 
@@ -40,7 +40,7 @@ const getAllAccessories = async (req: Request, res: Response) => {
 };
 
 const getOneAccessories = async (req: Request, res: Response) => {
-  const accessoriesService = new AccessoriesService();
+  const productsDeviceService = new ProductsDeviceService();
 
   const { accessoriesId } = req.params;
 
@@ -50,7 +50,7 @@ const getOneAccessories = async (req: Request, res: Response) => {
     return;
   }
 
-  const foundAccessories = await accessoriesService.findById(accessoriesId);
+  const foundAccessories = await productsDeviceService.findById(accessoriesId);
 
   if (!foundAccessories) {
     res.sendStatus(404);

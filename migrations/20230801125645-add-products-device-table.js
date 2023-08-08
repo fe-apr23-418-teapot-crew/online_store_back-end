@@ -1,5 +1,5 @@
 'use strict';
-const TABLE_NAME = 'accessories';
+const TABLE_NAME = 'products_device';
 
 module.exports = {
   async up(queryInterface, Sequelize) {

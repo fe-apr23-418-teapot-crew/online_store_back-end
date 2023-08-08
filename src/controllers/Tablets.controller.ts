@@ -1,17 +1,17 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { TabletsService } from '../services/tablets.service';
 import { ProductsService } from '../services/products.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductCategories } from '../types/enums/ProductCategories';
+import { ProductsDeviceService } from '../services/productsDevice.service';
 
 const getAllTablets = async (req: Request, res: Response) => {
-  const tabletsService = new TabletsService();
+  const productsDeviceService = new ProductsDeviceService();
   const productsService = new ProductsService();
 
-  const count = await tabletsService.count();
+  const count = await productsDeviceService.count();
 
   const { limit = count, offset = 0, sortBy = SortByOptions.ID } = req.query;
 
@@ -40,7 +40,7 @@ const getAllTablets = async (req: Request, res: Response) => {
 };
 
 const getOneTablet = async (req: Request, res: Response) => {
-  const tabletsService = new TabletsService();
+  const productsDeviceService = new ProductsDeviceService();
 
   const { tabletId } = req.params;
 
@@ -50,7 +50,7 @@ const getOneTablet = async (req: Request, res: Response) => {
     return;
   }
 
-  const foundTablet = await tabletsService.findById(tabletId);
+  const foundTablet = await productsDeviceService.findById(tabletId);
 
   if (!foundTablet) {
     res.sendStatus(404);
