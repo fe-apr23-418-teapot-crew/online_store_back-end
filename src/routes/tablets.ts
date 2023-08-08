@@ -1,11 +1,12 @@
 'use strict';
 
 import express from 'express';
-import { tabletsController } from '../controllers/Tablets.controller';
+import { devicesController } from '../controllers/ProductsDevice.controller';
+import { ProductCategories } from '../types/enums/ProductCategories';
 
 const router = express.Router();
 
-router.get('/', tabletsController.getAllTablets);
-router.get('/:tabletId', tabletsController.getOneTablet);
+router.get('/', devicesController.getAllDevices(ProductCategories.TABLETS));
+router.get('/:deviceId', devicesController.getOneDevice);
 
 export default router;
