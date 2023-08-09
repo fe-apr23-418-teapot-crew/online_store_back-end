@@ -6,14 +6,23 @@ import productsRouter from './routes/products';
 import phonesRouter from './routes/phones';
 import tabletsRouter from './routes/tablets';
 import accessoriesRouter from './routes/accessories';
+import registrationRouter from './routes/auth';
 import { initDB } from './initDB';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export const createServer = () => {
   const app = express();
 
   initDB();
 
-  app.use(cors());
+  app.use(
+    cors({
+      origin: process.env.CLIENT_URL,
+      credentials: true,
+    }),
+  );
 
   app.use('/products', express.json(), productsRouter);
 
@@ -22,6 +31,8 @@ export const createServer = () => {
   app.use('/tablets', express.json(), tabletsRouter);
 
   app.use('/accessories', express.json(), accessoriesRouter);
+
+  app.use(express.json(), registrationRouter);
 
   app.use(express.static('public'));
 
