@@ -1,11 +1,12 @@
 'use strict';
 
 import express from 'express';
-import { accessoriesController } from '../controllers/Accessories.controller';
+import { devicesController } from '../controllers/ProductsDevice.controller';
+import { ProductCategories } from '../types/enums/ProductCategories';
 
 const router = express.Router();
 
-router.get('/', accessoriesController.getAllAccessories);
-router.get('/:accessoriesId', accessoriesController.getOneAccessories);
+router.get('/', devicesController.getAllDevices(ProductCategories.ACCESSORIES));
+router.get('/:deviceId', devicesController.getOneDevice);
 
 export default router;
