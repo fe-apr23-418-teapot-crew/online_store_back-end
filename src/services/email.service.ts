@@ -26,7 +26,7 @@ const send = ({ email, subject, html }: EmailData) => {
 };
 
 const sendActivationLink = (email: string, token: string) => {
-  const link = `${process.env.CLIENT_URL}/activate/${token}`;
+  const link = `${process.env.CLIENT_URL}/activation/${token}`;
 
   return send({
     email,
