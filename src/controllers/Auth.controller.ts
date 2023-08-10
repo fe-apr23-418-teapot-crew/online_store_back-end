@@ -16,7 +16,7 @@ const register = async (req: Request, res: Response) => {
 
   await emailService.sendActivationLink(email, activationToken);
 
-  res.json(user);
+  res.json(normalize(user));
 };
 
 const activate = async (req: Request, res: Response) => {
@@ -35,7 +35,7 @@ const activate = async (req: Request, res: Response) => {
 
   await user.save();
 
-  res.json(user);
+  res.json(normalize(user));
 };
 
 const login = async (req: Request, res: Response) => {
