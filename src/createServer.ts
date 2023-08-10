@@ -7,7 +7,7 @@ import phonesRouter from './routes/phones';
 import tabletsRouter from './routes/tablets';
 import accessoriesRouter from './routes/accessories';
 import registrationRouter from './routes/auth';
-import usersRouter from './routes/users';
+import usersRouter from './routes/user';
 import { initDB } from './initDB';
 import dotenv from 'dotenv';
 
