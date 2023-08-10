@@ -172,7 +172,20 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
           </a>
         </td>
         <td>
-        	Get information about a specific product.
+        	Get information about a specific product <strong>by ID</strong>.
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	GET
+        </td>
+        <td>
+          <a href="https://online-store-api-swbg.onrender.com/products/apple-iphone-14-pro-512gb-spaceblack">
+            /products/apple-iphone-14-pro-512gb-spaceblack
+          </a>
+        </td>
+        <td>
+        	Get information about a specific product <strong>by itemId</strong>.
         </td>
     </tr>
     <tr>
