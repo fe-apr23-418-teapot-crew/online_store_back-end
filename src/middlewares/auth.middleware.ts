@@ -1,8 +1,9 @@
 'use strict';
 import { NextFunction, Request, Response } from 'express';
 import { jwtService } from '../services/jwt.service';
+import { ApiError } from '../exceptions/ApiError';
 
-export const authMiddleware = (
+export const authMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -10,25 +11,19 @@ export const authMiddleware = (
   const authHeader = req.headers['authorization'];
 
   if (!authHeader) {
-    res.sendStatus(401);
-
-    return;
+    throw ApiError.Unauthorized();
   }
 
   const [, accessToken] = authHeader.split(' ');
 
   if (!accessToken) {
-    res.sendStatus(401);
-
-    return;
+    throw ApiError.Unauthorized();
   }
 
   const userData = jwtService.validateAccessToken(accessToken);
 
   if (!userData) {
-    res.sendStatus(401);
-
-    return;
+    throw ApiError.Unauthorized();
   }
 
   next();

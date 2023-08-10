@@ -1,7 +1,7 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { UsersService } from '../services/users.service';
+import { userService } from '../services/users.service';
 import { NormalizeUser } from '../types/User';
 
 export const normalize = ({ id, email }: NormalizeUser) => {
@@ -12,9 +12,7 @@ export const normalize = ({ id, email }: NormalizeUser) => {
 };
 
 const getAll = async (req: Request, res: Response) => {
-  const usersService = new UsersService();
-
-  const users = await usersService.getSelectedActive();
+  const users = await userService.getSelectedActive();
 
   res.json(users.rows.map(normalize));
 };

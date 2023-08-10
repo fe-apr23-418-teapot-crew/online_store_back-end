@@ -10,6 +10,7 @@ import registrationRouter from './routes/auth';
 import usersRouter from './routes/user';
 import { initDB } from './initDB';
 import dotenv from 'dotenv';
+import { errorMiddleware } from './middlewares/error.middleware';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -34,10 +35,13 @@ export const createServer = () => {
 
   app.use('/accessories', express.json(), accessoriesRouter);
 
-  app.use(express.json(), registrationRouter);
   app.use('/user', express.json(), usersRouter);
 
+  app.use(express.json(), registrationRouter);
+
   app.use(express.static('public'));
+
+  app.use(errorMiddleware);
 
   return app;
 };

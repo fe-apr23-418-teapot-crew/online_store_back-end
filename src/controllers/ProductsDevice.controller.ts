@@ -1,19 +1,18 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { ProductsService } from '../services/products.service';
+import { productsService } from '../services/products.service';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { ProductCategories } from '../types/enums/ProductCategories';
-import { ProductsDeviceService } from '../services/productsDevice.service';
+import { productsDeviceService } from '../services/productsDevice.service';
 import { FindAllOptions } from '../types/findAllOptions';
 import { Op } from 'sequelize';
+import { ApiError } from '../exceptions/ApiError';
+import { ALL_ERROR_MESSAGES, ERROR_CODES } from '../utils/errorMessages';
 
 const getAllDevices = (productCategory: ProductCategories) => {
   return async (req: Request, res: Response) => {
-    const productsDeviceService = new ProductsDeviceService();
-    const productsService = new ProductsService();
-
     const count = await productsDeviceService.count();
 
     const {
@@ -27,9 +26,11 @@ const getAllDevices = (productCategory: ProductCategories) => {
       validateQueryParameters(+limit, +offset, sortBy as SortByOptions);
 
     if (!isSortByValid || !isLimitValid || !isOffsetValid) {
-      res.sendStatus(400);
-
-      return;
+      throw ApiError.BadRequest(ALL_ERROR_MESSAGES.INVALID_SORTING, {
+        sortBy: isSortByValid ? undefined : ERROR_CODES.INVALID_SORT,
+        limit: isLimitValid ? undefined : ERROR_CODES.INVALID_LIMIT,
+        offset: isOffsetValid ? undefined : ERROR_CODES.INVALID_OFFSET,
+      });
     }
 
     const where: FindAllOptions['where'] = {};
@@ -52,22 +53,18 @@ const getAllDevices = (productCategory: ProductCategories) => {
 };
 
 const getOneDevice = async (req: Request, res: Response) => {
-  const productsDeviceService = new ProductsDeviceService();
-
   const { deviceId } = req.params;
 
   if (Number(deviceId)) {
-    res.sendStatus(400);
-
-    return;
+    throw ApiError.BadRequest(ALL_ERROR_MESSAGES.INVALID_ITEM_ID, {
+      itemId: ERROR_CODES.INVALID_ITEM_ID,
+    });
   }
 
   const foundDevice = await productsDeviceService.findById(deviceId);
 
   if (!foundDevice) {
-    res.sendStatus(404);
-
-    return;
+    throw ApiError.NotFound();
   }
 
   res.json(foundDevice);

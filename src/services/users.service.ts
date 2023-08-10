@@ -3,7 +3,7 @@ import { Op } from 'sequelize';
 import { Users } from '../models/users.model';
 import { CreateUserOptions } from '../types/createUserOptions';
 
-export class UsersService {
+class UserService {
   create(options: CreateUserOptions) {
     return Users.create(options);
   }
@@ -30,3 +30,5 @@ export class UsersService {
     });
   }
 }
+
+export const userService = Object.freeze(new UserService());

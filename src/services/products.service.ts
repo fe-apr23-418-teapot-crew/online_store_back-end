@@ -3,7 +3,7 @@ import { Products } from '../models/products.model';
 import { FindAllOptions } from '../types/findAllOptions';
 import { getPagination } from '../utils/helpers';
 
-export class ProductsService {
+class ProductsService {
   findById(id: number) {
     return Products.findByPk(id);
   }
@@ -37,3 +37,5 @@ export class ProductsService {
     return Products.count();
   }
 }
+
+export const productsService = Object.freeze(new ProductsService());

@@ -1,15 +1,24 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { UsersService } from '../services/users.service';
+import { userService } from '../services/users.service';
 import { v4 as uuidv4 } from 'uuid';
 import { emailService } from '../services/email.service';
 import { jwtService } from '../services/jwt.service';
 import { normalize } from './Users.controller';
+import { ApiError } from '../exceptions/ApiError';
+import { ALL_ERROR_MESSAGES, ERROR_CODES } from '../utils/errorMessages';
 
 const register = async (req: Request, res: Response) => {
-  const userService = new UsersService();
   const { email, password } = req.body;
+
+  const existingUser = await userService.getByEmail(email);
+
+  if (existingUser) {
+    throw ApiError.BadRequest(ALL_ERROR_MESSAGES.EXISTING_EMAIL, {
+      email: ERROR_CODES.EXISTING_EMAIL,
+    });
+  }
 
   const activationToken = uuidv4();
   const user = await userService.create({ email, password, activationToken });
@@ -20,15 +29,12 @@ const register = async (req: Request, res: Response) => {
 };
 
 const activate = async (req: Request, res: Response) => {
-  const usersService = new UsersService();
   const { activationToken } = req.params;
 
-  const user = await usersService.findOneByToken(activationToken);
+  const user = await userService.findOneByToken(activationToken);
 
   if (!user) {
-    res.sendStatus(404);
-
-    return;
+    throw ApiError.NotFound();
   }
 
   user.activationToken = null;
@@ -39,15 +45,12 @@ const activate = async (req: Request, res: Response) => {
 };
 
 const login = async (req: Request, res: Response) => {
-  const usersService = new UsersService();
   const { email, password } = req.body;
 
-  const user = await usersService.getByEmail(email);
+  const user = await userService.getByEmail(email);
 
   if (!user || password !== user.password) {
-    res.sendStatus(401);
-
-    return;
+    throw ApiError.Unauthorized();
   }
 
   const userData = normalize(user);

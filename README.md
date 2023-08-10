@@ -57,7 +57,18 @@ DB_NAME=db_name
 DB_HOST=db_host
 DB_PORT=db_port
 NODE_ENV=development # this will chengable for each .env file (development, production, qa);
+
+SMTP_HOST=smtp_host # smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=smtp_user # example@gmail.com
+SMTP_PASSWORD=smtp_passwprd # app password
+
+CLIENT_URL=client_url # your front-end url
+
+JWT_ACCESS_SECRET=jwt_access_secret # create uuidv4 token or another token
 ```
+
+<a href="https://support.google.com/mail/answer/7126229?authuser=1&authuser=1&hl=en&authuser=1&visit_id=638272685120770679-2138640849&rd=2#zippy=">Instruction for SMTP_PASSWORD</a>
 
 4. Create tables:
 
@@ -119,9 +130,12 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <th>
         	Description
         </th>
+        <th>
+        	Body
+        </th>
     </tr>
     	<tr>
-        <th colspan="3">Products</th>
+        <th colspan="4">Products</th>
     	</tr>
     <tr>
         <td>
@@ -134,6 +148,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get an object with count and rows containing a list of all products.
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -148,6 +165,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <td>
         	Get an object with count and rows containing a list of the <strong>15 newest phones</strong> sorted by price ascending
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     <tr>
         <td>
@@ -160,6 +180,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get an object with count and rows containing a list of the <strong>15 more discounting price phones</strong> sorted by discount descending
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -174,6 +197,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <td>
         	Get information about a specific product <strong>by ID</strong>.
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     <tr>
         <td>
@@ -187,6 +213,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <td>
         	Get information about a specific product <strong>by itemId</strong>.
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     <tr>
         <td>
@@ -199,6 +228,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get an object with count and rows containing a list of all products that belong to the same category as the product with ID 1, randomly sorted.
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -218,6 +250,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
             <br> - <strong>discount</strong> = sorting from biggest discount to lower;
             <br> - <strong>price</strong> = sorting from lower price to bigger;
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     <tr>
         <td>
@@ -230,6 +265,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get a filtered list of products by name, case insensitive. This works for each category(<strong>/phones?.., /tablets?.., /accessories?..</strong>)
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -247,9 +285,12 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
             <br> - <strong>tablets</strong>;
             <br> - <strong>accessories</strong>;
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     	<tr>
-        	<th colspan="3">Phones</th>
+        	<th colspan="4">Phones</th>
     	</tr>
     <tr>
         <td>
@@ -262,6 +303,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get an object with count and rows containing a list of all phones.
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -276,9 +320,12 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <td>
         	Get information about a specific phone.
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     	<tr>
-        <th colspan="3">Tablets</th>
+        <th colspan="4">Tablets</th>
     	</tr>
     <tr>
         <td>
@@ -291,6 +338,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get an object with count and rows containing a list of all tablets.
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -305,9 +355,12 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <td>
         	Get information about a specific tablet.
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     	<tr>
-        <th colspan="3">Accessories</th>
+        <th colspan="4">Accessories</th>
     	</tr>
     <tr>
         <td>
@@ -320,6 +373,9 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get an object with count and rows containing a list of all accessories.
+        </td>
+        <td>
+        	NULL
         </td>
     </tr>
     <tr>
@@ -334,9 +390,12 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         <td>
         	Get information about a specific accessory.
         </td>
+        <td>
+        	NULL
+        </td>
     </tr>
     	<tr>
-        <th colspan="3">Images</th>
+        <th colspan="4">Images</th>
     	</tr>
     <tr>
         <td>
@@ -349,6 +408,66 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         </td>
         <td>
         	Get the photo of a specific product.
+        </td>
+        <td>
+        	NULL
+        </td>
+    </tr>
+    	<tr>
+        <th colspan="4">Authorization</th>
+    	</tr>
+    <tr>
+        <td>
+        	POST
+        </td>
+        <td>
+          <a href="https://online-store-api-swbg.onrender.com/registration">
+          	/registration
+          </a>
+        </td>
+        <td>
+        	Create user in table users
+        </td>
+        <td>
+        	{
+            	email: your_email,
+                password: your_password
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	GET
+        </td>
+        <td>
+          <a href="https://online-store-api-swbg.onrender.com/activation/54e9872d-65a5-4671-8474-cac92d39d902">
+          	/activation/54e9872d-65a5-4671-8474-cac92d39d902
+          </a>
+        </td>
+        <td>
+        	Activate user if true then remove activation token from table users
+        </td>
+        <td>
+			NULL
+        </td>
+    </tr>
+    <tr>
+        <td>
+        	POST
+        </td>
+        <td>
+          <a href="https://online-store-api-swbg.onrender.com/login">
+          	/login
+          </a>
+        </td>
+        <td>
+        	Get user from table or error
+        </td>
+        <td>
+        	{
+            	email: your_email,
+                password: your_password
+            }
         </td>
     </tr>
 </table>
