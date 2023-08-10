@@ -53,7 +53,7 @@ npm install
 ```dotenv
 DB_USERNAME=db_username
 DB_PASSWORD=db_password
-DB_NAME=db_name
+DB_NAME=db_name_production # this will chengable for each .env file (db_name_development, production, qa)
 DB_HOST=db_host
 DB_PORT=db_port
 NODE_ENV=development # this will chengable for each .env file (development, production, qa);
@@ -429,10 +429,12 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
         	Create user in table users
         </td>
         <td>
-        	{
-            	email: your_email,
-                password: your_password
-            }
+          <pre>
+{
+	"email": "your_email",
+	"password": "your_password"
+}
+          </pre>
         </td>
     </tr>
     <tr>
@@ -461,13 +463,15 @@ The base URL for the API is: **[https://online-store-api-swbg.onrender.com/](htt
           </a>
         </td>
         <td>
-        	Get user from table or error
+        	Get user from table users
         </td>
         <td>
-        	{
-            	email: your_email,
-                password: your_password
-            }
+          <pre>
+{
+	"email": "your_email",
+	"password": "your_password"
+}
+          </pre>
         </td>
     </tr>
 </table>
