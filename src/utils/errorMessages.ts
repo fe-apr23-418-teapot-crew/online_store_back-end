@@ -9,6 +9,7 @@ export const ERROR_MESSAGES = {
   INVALID_ID_OR_ITEM_ID: 'ID or Item ID is required',
   SERVER_ERROR: 'Internal Server Error',
   EXISTING_EMAIL: 'Email is already taken',
+  INVALID_PASSWORD: 'Password is wrong',
 };
 
 export const GENERIC_MESSAGES = {
@@ -17,6 +18,7 @@ export const GENERIC_MESSAGES = {
   INVALID_ITEM_ID: ERROR_MESSAGES.INVALID_ITEM_ID,
   INVALID_ID_OR_ITEM_ID: ERROR_MESSAGES.INVALID_ID_OR_ITEM_ID,
   EXISTING_EMAIL: ERROR_MESSAGES.EXISTING_EMAIL,
+  INVALID_PASSWORD: ERROR_MESSAGES.INVALID_PASSWORD,
 };
 
 export const ERROR_CODES = {
@@ -28,6 +30,7 @@ export const ERROR_CODES = {
   INVALID_ID_OR_ITEM_ID: 'invalid id or itemId',
   SERVER_ERROR: 'internal server error',
   EXISTING_EMAIL: 'Email is already taken',
+  INVALID_PASSWORD: 'Password is wrong',
 };
 
 export const ALL_ERROR_MESSAGES = { ...ERROR_MESSAGES, ...GENERIC_MESSAGES };

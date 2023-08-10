@@ -9,5 +9,6 @@ const router = express.Router();
 router.post('/registration', catchError(authController.register));
 router.get('/activation/:activationToken', catchError(authController.activate));
 router.post('/login', catchError(authController.login));
+router.get('/refresh', catchError(authController.refresh));
 
 export default router;
