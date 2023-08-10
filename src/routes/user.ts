@@ -7,6 +7,6 @@ import { catchError } from '../utils/catchError';
 
 const router = express.Router();
 
-router.get('/', authMiddleware, catchError(usersController.getAll));
+router.get('/', catchError(authMiddleware), catchError(usersController.getAll));
 
 export default router;

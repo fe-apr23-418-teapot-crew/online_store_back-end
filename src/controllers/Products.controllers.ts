@@ -1,16 +1,16 @@
 'use strict';
 
 import { Request, Response } from 'express';
-import { ProductsService } from '../services/products.service';
+import { productsService } from '../services/products.service';
 import { ProductCategories } from '../types/enums/ProductCategories';
 import { SortByOptions } from '../types/enums/Sorting';
 import { validateQueryParameters } from '../utils/helpers';
 import { FindAllOptions } from '../types/findAllOptions';
 import { Op } from 'sequelize';
+import { ApiError } from '../exceptions/ApiError';
+import { ALL_ERROR_MESSAGES, ERROR_CODES } from '../utils/errorMessages';
 
 const getAllProducts = async (req: Request, res: Response) => {
-  const productsService = new ProductsService();
-
   const count = await productsService.count();
 
   const {
@@ -30,9 +30,11 @@ const getAllProducts = async (req: Request, res: Response) => {
     );
 
   if (!isSortByValid || !isLimitValid || !isOffsetValid) {
-    res.sendStatus(400);
-
-    return;
+    throw ApiError.BadRequest(ALL_ERROR_MESSAGES.INVALID_SORTING, {
+      sortBy: isSortByValid ? undefined : ERROR_CODES.INVALID_SORT,
+      limit: isLimitValid ? undefined : ERROR_CODES.INVALID_LIMIT,
+      offset: isOffsetValid ? undefined : ERROR_CODES.INVALID_OFFSET,
+    });
   }
 
   const where: FindAllOptions['where'] = {};
@@ -62,14 +64,12 @@ const getAllProducts = async (req: Request, res: Response) => {
 };
 
 const getOneProductById = async (req: Request, res: Response) => {
-  const productsService = new ProductsService();
-
   const { idOrItemId } = req.params;
 
   if (!idOrItemId) {
-    res.sendStatus(400);
-
-    return;
+    throw ApiError.BadRequest(ALL_ERROR_MESSAGES.INVALID_ID_OR_ITEM_ID, {
+      idOrItemId: ERROR_CODES.INVALID_ID_OR_ITEM_ID,
+    });
   }
 
   let foundProduct;
@@ -81,31 +81,25 @@ const getOneProductById = async (req: Request, res: Response) => {
   }
 
   if (!foundProduct) {
-    res.sendStatus(404);
-
-    return;
+    throw ApiError.NotFound();
   }
 
   res.json(foundProduct);
 };
 
 const recommendedProducts = async (req: Request, res: Response) => {
-  const productsService = new ProductsService();
-
   const { productId } = req.params;
 
   if (isNaN(Number(productId))) {
-    res.sendStatus(400);
-
-    return;
+    throw ApiError.BadRequest(ALL_ERROR_MESSAGES.INVALID_ID, {
+      productId: ERROR_CODES.INVALID_ID,
+    });
   }
 
   const foundProduct = await productsService.findById(+productId);
 
   if (!foundProduct) {
-    res.sendStatus(404);
-
-    return;
+    throw ApiError.NotFound();
   }
 
   const results = await productsService.findAndCountAll({
@@ -119,8 +113,6 @@ const recommendedProducts = async (req: Request, res: Response) => {
 };
 
 const newProducts = async (req: Request, res: Response) => {
-  const productsService = new ProductsService();
-
   const results = await productsService.findAndCountAll({
     where: {
       category: ProductCategories.PHONES,
@@ -133,8 +125,6 @@ const newProducts = async (req: Request, res: Response) => {
 };
 
 const discountProducts = async (req: Request, res: Response) => {
-  const productsService = new ProductsService();
-
   const results = await productsService.findAndCountAll({
     where: {
       category: ProductCategories.PHONES,
