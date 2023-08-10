@@ -14,6 +14,12 @@ export class ProductsService {
   //   });
   // }
 
+  findByItemId(itemId: string) {
+    return Products.findOne({
+      where: { itemId },
+    });
+  }
+
   findAndCountAll(options: FindAllOptions = {}) {
     const { limit, offset, sortBy, where } = options;
 

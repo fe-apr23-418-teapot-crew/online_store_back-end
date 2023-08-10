@@ -7,6 +7,7 @@ import phonesRouter from './routes/phones';
 import tabletsRouter from './routes/tablets';
 import accessoriesRouter from './routes/accessories';
 import registrationRouter from './routes/auth';
+import usersRouter from './routes/users';
 import { initDB } from './initDB';
 import dotenv from 'dotenv';
 
@@ -34,6 +35,7 @@ export const createServer = () => {
   app.use('/accessories', express.json(), accessoriesRouter);
 
   app.use(express.json(), registrationRouter);
+  app.use('/user', express.json(), usersRouter);
 
   app.use(express.static('public'));
 
